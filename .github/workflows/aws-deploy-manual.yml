@@ -71,7 +71,7 @@ jobs:
 
           echo ::set-output name=lw_key_id::$MAN_LW_API_KEY_ID_SECRET
           echo ::set-output name=lw_secret::$MAN_LW_API_KEY_ID_SECRET
-          echo ::set-output name=lw_account:$MAN_LW_ACCOUNT_SECRET
+          echo ::set-output name=lw_account::$MAN_LW_ACCOUNT_SECRET
       
       
 
