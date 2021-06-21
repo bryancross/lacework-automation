@@ -48,6 +48,14 @@ jobs:
 
       - name: Mask up
         run: |
+          MAN_AWS_REGION_SECRET=$(jq -r '.inputs.MAN_AWS_REGION' $GITHUB_EVENT_PATH)
+          MAN_AWS_ACCESS_KEY_ID_SECRET=$(jq -r '.inputs.MAN_AWS_ACCESS_KEY_ID' $GITHUB_EVENT_PATH)
+          MAN_AWS_SECRET_ACCESS_KEY_SECRET=$(jq -r '.inputs.MAN_AWS_SECRET_ACCESS_KEY' $GITHUB_EVENT_PATH)
+          MAN_LW_API_KEY_ID_SECRET=$(jq -r '.inputs.MAN_LW_API_KEY_ID' $GITHUB_EVENT_PATH)
+          MAN_LW_API_SECRET_SECRET=$(jq -r '.inputs.MAN_LW_API_SECRET' $GITHUB_EVENT_PATH)
+          MAN_LW_ACCOUNT_SECRET=$(jq -r '.inputs.MAN_LW_ACCOUNT' $GITHUB_EVENT_PATH)
+          
+          
           echo ::add-mask::$MAN_AWS_REGION
           echo ::add-mask::$MAN_AWS_ACCESS_KEY_ID
           echo ::add-mask::$MAN_AWS_SECRET_ACCESS_KEY
@@ -73,9 +81,13 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ github.event.inputs.MAN_AWS_REGION }}
+          aws-access-key-id: = ${{ MAN_AWS_ACCESS_KEY_ID_SECRET }}
+          aws-secret-access-key: ${{ MAN_AWS_SECRET_ACCESS_KEY_SECRET }}
+          aws-region: ${{ MAN_AWS_REGION_SECRET }}
+          
+          #aws-access-key-id: ${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID }}
+          #aws-secret-access-key: ${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
+          #aws-region: ${{ github.event.inputs.MAN_AWS_REGION }}
 
 #      - name: Do the THING
 #        env:
