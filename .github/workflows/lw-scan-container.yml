@@ -35,4 +35,5 @@ jobs:
           LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
           LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
         run: | 
+          ./lw-scanner config view
           ./lw-scanner evaluate bryancross test-image 
