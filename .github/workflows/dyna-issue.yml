@@ -25,13 +25,10 @@ jobs:
         uses: twilio-labs/actions-sms@v1
         with:
           fromPhoneNumber: '+19014575769'
-          # toPhoneNumber: ${{ secrets.MATTS_NUMBER }}
+          toPhoneNumber: ${{ secrets.MATTS_NUMBER }}
           toPhoneNumber: '+15126887422'
           message: ${{ github.event.issue.body }}
         env:
-         TWILIO_ACCOUNT_SID: "AC702aa3782a462bf7ac7e34b5e78e1126"
-         TWILIO_API_KEY: "SK910d6dc6d494e372861ebda753eebf4f"
-         TWILIO_API_SECRET: "2Q77AfDpUZCJlHy4GDXLuWSaVxtEEKL7"
-         #TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-         #TWILIO_API_KEY: ${{ secrets.TWILIO_API_KEY }}
-         #WILIO_API_SECRET: ${{ secrets.TWILIO_API_SECRET }}
+         TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+         TWILIO_API_KEY: ${{ secrets.TWILIO_API_KEY }}
+         WILIO_API_SECRET: ${{ secrets.TWILIO_API_SECRET }}
