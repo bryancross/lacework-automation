@@ -61,8 +61,8 @@ jobs:
         with:
           aws-access-key-id: ${{ github.events.inputs.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ github.events.inputs.AWS_SECRET_ACCESS_KEY }}
-          #aws-region: us-east-1
-          aws-region: ${{ github.events.inputs.AWS_REGION }}
+          aws-region: us-east-1
+          #aws-region: ${{ github.events.inputs.AWS_REGION }}
 
       - name: Do the THING
         env:
