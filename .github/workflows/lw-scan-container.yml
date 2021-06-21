@@ -1,4 +1,4 @@
-name: Lacework-Deploy CT and Config
+name: LW Inline Scan
 # TODO: Leverage Terraform backend maintenance of state file (https://www.terraform.io/docs/language/settings/backends/s3.html)
 # Controls when the action will run. 
 on:
