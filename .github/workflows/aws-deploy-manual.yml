@@ -49,12 +49,12 @@ jobs:
       - name: Mask up
         id: mask-up
         run: |
-          MAN_AWS_REGION_SECRET=$(jq -r '.inputs.MAN_AWS_REGION' $GITHUB_EVENT_PATH)
-          MAN_AWS_ACCESS_KEY_ID_SECRET=$(jq -r '.inputs.MAN_AWS_ACCESS_KEY_ID' $GITHUB_EVENT_PATH)
-          MAN_AWS_SECRET_ACCESS_KEY_SECRET=$(jq -r '.inputs.MAN_AWS_SECRET_ACCESS_KEY' $GITHUB_EVENT_PATH)
-          MAN_LW_API_KEY_ID_SECRET=$(jq -r '.inputs.MAN_LW_API_KEY_ID' $GITHUB_EVENT_PATH)
-          MAN_LW_API_SECRET_SECRET=$(jq -r '.inputs.MAN_LW_API_SECRET' $GITHUB_EVENT_PATH)
-          MAN_LW_ACCOUNT_SECRET=$(jq -r '.inputs.MAN_LW_ACCOUNT' $GITHUB_EVENT_PATH)
+          MAN_AWS_REGION_SECRET=$${{ github.event.inputs.MAN_AWS_REGION' }}
+          MAN_AWS_ACCESS_KEY_ID_SECRET=$${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID' }}
+          MAN_AWS_SECRET_ACCESS_KEY_SECRET=$${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY' }}
+          MAN_LW_API_KEY_ID_SECRET=$${{ github.event.inputs.MAN_LW_API_KEY_ID' }}
+          MAN_LW_API_SECRET_SECRET=$${{ github.event.inputs.MAN_LW_API_SECRET' }}
+          MAN_LW_ACCOUNT_SECRET=$${{ github.event.inputs.MAN_LW_ACCOUNT' }}
           
           
           echo ::add-mask::$MAN_AWS_REGION_SECRET
