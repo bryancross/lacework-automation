@@ -78,6 +78,7 @@ jobs:
           sudo chmod +x install.sh
           sudo ./install.sh
           lacework version
+          echo "SECRET: ${{ steps.mask-up.outputs.MAN_AWS_ACCESS_KEY_ID_SECRET }} "
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
