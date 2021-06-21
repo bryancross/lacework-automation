@@ -49,7 +49,7 @@ jobs:
       - name: Mask up
         id: mask-up
         run: |
-          MAN_AWS_REGION_SECRET=${{ github.event.inputs.MAN_AWS_REGION'}}
+          MAN_AWS_REGION_SECRET=${{ github.event.inputs.MAN_AWS_REGION }}
           MAN_AWS_ACCESS_KEY_ID_SECRET=${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID }}
           MAN_AWS_SECRET_ACCESS_KEY_SECRET=${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
           MAN_LW_API_KEY_ID_SECRET=${{ github.event.inputs.MAN_LW_API_KEY_ID }}
