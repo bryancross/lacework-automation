@@ -32,7 +32,7 @@ jobs:
 
       - name: Scan image
         env: 
-          LW_ACCOUNT_NAME: lwintbryancross
+          LW_ACCOUNT_NAME: _67d888a3d3482667c13e49f57c6b6aa4
           LW_ACCESS_TOKEN: _67d888a3d3482667c13e49f57c6b6aa4
         run: | 
           ./lw-scanner config view
