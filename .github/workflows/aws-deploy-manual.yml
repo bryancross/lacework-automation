@@ -64,7 +64,12 @@ jobs:
           echo ::add-mask::$MAN_LW_API_SECRET_SECRET
           echo ::add-mask::$MAN_LW_ACCOUNT_SECRET
 
-      
+          echo ::set-output name=MAN_AWS_REGION_SECRET::$MAN_AWS_REGION_SECRET
+          echo ::set-output name=MAN_AWS_ACCESS_KEY_ID_SECRET::$MAN_AWS_ACCESS_KEY_ID_SECRET
+          echo ::set-output name=MAN_AWS_SECRET_ACCESS_KEY_SECRET::$MAN_AWS_SECRET_ACCESS_KEY_SECRET
+          echo ::set-output name=MAN_LW_API_KEY_ID_SECRET::$MAN_LW_API_KEY_ID_SECRET
+          echo ::set-output name=MAN_LW_API_SECRET_SECRET::$MAN_LW_API_KEY_ID_SECRET
+          echo ::set-output name=MAN_LW_ACCOUNT_SECRET:$MAN_LW_ACCOUNT_SECRET
       
       
 
