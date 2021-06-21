@@ -36,5 +36,6 @@ jobs:
         #  LW_ACCESS_TOKEN: _67d888a3d3482667c13e49f57c6b6aa4
         run: | 
           export LW_ACCOUNT_NAME=lwintbryancross
+          export LW_ACCESS_TOKEN=_67d888a3d3482667c13e49f57c6b6aa4
           ./lw-scanner config view
           ./lw-scanner evaluate bryancross test-image 
