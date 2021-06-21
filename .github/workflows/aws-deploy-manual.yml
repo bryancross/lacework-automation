@@ -12,23 +12,23 @@ on:
         required: true
       MAN_AWS_ACCESS_KEY_ID: 
         description: 'Your AWS Access Key'
-        default: 'XXXXXXXXXXXXXXXXXXXX'
+        default: 'AKIA3FJB3GXTVNUVIY4H'
         required: true
       MAN_AWS_SECRET_ACCESS_KEY: 
         description: 'Your AWS Secret'
-        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        default: 'lIzp/7DwtG/mKzD6yI8WZ1/xangwnif2UWRHGG0A'
         required: true
       MAN_LW_API_KEY_ID:
         description: 'Your Lacework API KeyId'
-        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        default: 'LWINTBRY_7CCC3D8447865E16C4086CC3C240B9F5121F3A362093AFF'
         required: true
       MAN_LW_API_SECRET:
         description: 'Your Lacework API Secret'
-        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        default: '_67d888a3d3482667c13e49f57c6b6aa4'
         required: true
       MAN_LW_ACCOUNT:
         description: 'Your Lacework Account'
-        default: 'XXXXXXXXXX'
+        default: 'lwintbryancross'
         required: true
                
       
@@ -47,6 +47,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Mask up
+        id: mask-up
         run: |
           MAN_AWS_REGION_SECRET=$(jq -r '.inputs.MAN_AWS_REGION' $GITHUB_EVENT_PATH)
           MAN_AWS_ACCESS_KEY_ID_SECRET=$(jq -r '.inputs.MAN_AWS_ACCESS_KEY_ID' $GITHUB_EVENT_PATH)
@@ -56,12 +57,12 @@ jobs:
           MAN_LW_ACCOUNT_SECRET=$(jq -r '.inputs.MAN_LW_ACCOUNT' $GITHUB_EVENT_PATH)
           
           
-          echo ::add-mask::$MAN_AWS_REGION
-          echo ::add-mask::$MAN_AWS_ACCESS_KEY_ID
-          echo ::add-mask::$MAN_AWS_SECRET_ACCESS_KEY
-          echo ::add-mask::$MAN_LW_API_KEY_ID
-          echo ::add-mask::$MAN_LW_API_SECRET
-          echo ::add-mask::$MAN_LW_ACCOUNT
+          echo ::add-mask::$MAN_AWS_REGION_SECRET
+          echo ::add-mask::$MAN_AWS_ACCESS_KEY_ID_SECRET
+          echo ::add-mask::$MAN_AWS_SECRET_ACCESS_KEY_SECRET
+          echo ::add-mask::$MAN_LW_API_KEY_ID_SECRET
+          echo ::add-mask::$MAN_LW_API_SECRET_SECRET
+          echo ::add-mask::$MAN_LW_ACCOUNT_SECRET
 
       
       
@@ -81,9 +82,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: = ${{ MAN_AWS_ACCESS_KEY_ID_SECRET }}
-          aws-secret-access-key: ${{ MAN_AWS_SECRET_ACCESS_KEY_SECRET }}
-          aws-region: ${{ MAN_AWS_REGION_SECRET }}
+          aws-access-key-id: = ${{ steps.mask-up.outputs.MAN_AWS_ACCESS_KEY_ID_SECRET }}
+          aws-secret-access-key: ${{ steps.mask-up.outputs.MAN_AWS_SECRET_ACCESS_KEY_SECRET }}
+          aws-region: ${{ steps.mask-up.outputs.MAN_AWS_REGION_SECRET }}
           
           #aws-access-key-id: ${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID }}
           #aws-secret-access-key: ${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
