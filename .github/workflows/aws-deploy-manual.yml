@@ -89,10 +89,14 @@ jobs:
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: = ${{ steps.mask-up.outputs.aws_access_key_id }}
-          aws-secret-access-key: ${{ steps.mask-up.outputs.aws_secret }}
-          aws-region: ${{ steps.mask-up.outputs.aws_region }}
+        env: 
+          AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
+          AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
+#        with:
+#          aws-access-key-id: = ${{ steps.mask-up.outputs.aws_access_key_id }}
+#          aws-secret-access-key: ${{ steps.mask-up.outputs.aws_secret }}
+#          aws-region: ${{ steps.mask-up.outputs.aws_region }}
           
           #aws-access-key-id: ${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID }}
           #aws-secret-access-key: ${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
