@@ -87,12 +87,12 @@ jobs:
           lacework version
           echo ${{ steps.mask-up.outputs.MAN_AWS_ACCESS_KEY_ID_SECRET }}
       
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        env: 
-          AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
-          AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
-          AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        env: 
+#          AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
+#          AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
+#          AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
 #        with:
 #          aws-access-key-id: = ${{ steps.mask-up.outputs.aws_access_key_id }}
 #          aws-secret-access-key: ${{ steps.mask-up.outputs.aws_secret }}
@@ -102,12 +102,15 @@ jobs:
           #aws-secret-access-key: ${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
           #aws-region: ${{ github.event.inputs.MAN_AWS_REGION }}
 
-#      - name: Do the THING
-#        env:
-#          LW_API_KEY: ${{ github.event.inputs.MAN_LW_API_KEY_ID }}
-#          LW_API_SECRET: ${{ github.event.inputs.MAN_LW_API_SECRET }}
-#          LW_ACCOUNT: ${{ github.event.inputs.MAN_LW_ACCOUNT }}
-#        run: | 
-#          terraform init
-#          terraform apply --auto-approve
+      - name: Do the THING
+        env:
+          LW_API_KEY: ${{ github.event.inputs.lw_key_id }}
+          LW_API_SECRET: ${{ github.event.inputs.lw_secret }}
+          LW_ACCOUNT: ${{ github.event.inputs.lw_account }}
+          AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
+          AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
+        run: | 
+          terraform init
+          terraform apply --auto-approve
           
