@@ -59,16 +59,16 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         env:
-          aws-access-key-id: ${{ github.events.inputs.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ github.events.inputs.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-          #aws-region: ${{ github.events.inputs.AWS_REGION }}
+          aws-access-key-id: ${{ github.event.inputs.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ github.event.inputs.AWS_SECRET_ACCESS_KEY }}
+          #aws-region: us-east-1
+          aws-region: ${{ github.event.inputs.AWS_REGION }}
 
       - name: Do the THING
         env:
-          LW_API_KEY: ${{ github.events.inputs.LW_API_KEY }}
-          LW_API_SECRET: ${{ github.events.inputs.LW_API_SECRET }}
-          LW_ACCOUNT: ${{ github.events.inputs.LW_ACCOUNT }}
+          LW_API_KEY: ${{ github.event.inputs.LW_API_KEY }}
+          LW_API_SECRET: ${{ github.event.inputs.LW_API_SECRET }}
+          LW_ACCOUNT: ${{ github.event.inputs.LW_ACCOUNT }}
         run: | 
           terraform init
           terraform apply --auto-approve
