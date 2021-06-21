@@ -8,7 +8,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  BuildAndScan:
     runs-on: ubuntu-latest
     steps:
 
@@ -26,8 +26,5 @@ jobs:
           sudo chmod +x lw-scanner
 
       - name: Scan image
-        #env: 
-        #  LW_ACCOUNT_NAME: lwintbryancross
-        #  LW_ACCESS_TOKEN: _67d888a3d3482667c13e49f57c6b6aa4
         run: | 
           ./lw-scanner evaluate bryancross test-image -t ${{ secrets.LW_ACCESS_TOKEN }} -n ${{ secrets.LW_ACCOUNT_NAME }}
