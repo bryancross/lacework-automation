@@ -10,10 +10,11 @@ on:
         description: 'AWS Region to deploy in'
         default: 'us-east-1'
         required: true
-#      AWS_ACCESS_KEY_ID: 
-#        description: 'Your AWS Access Key'
-#       default: 'XXXXXXXXXXXXXXXXXXXX'
-#       required: true
+      AWS_ACCESS_KEY_ID: 
+        description: 'Your AWS Access Key'
+        default: 'XXXXXXXXXXXXXXXXXXXX'
+        required: true
+        
 #      AWS_SECRET: 
 #        description: 'Your AWS Secret'
 #       default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
