@@ -30,4 +30,4 @@ jobs:
         #  LW_ACCOUNT_NAME: lwintbryancross
         #  LW_ACCESS_TOKEN: _67d888a3d3482667c13e49f57c6b6aa4
         run: | 
-          ./lw-scanner evaluate bryancross test-image -t _633ab9a410287cceef6f96a67c4c42fa -n lwintbryancross
+          ./lw-scanner evaluate bryancross test-image -t ${{ secrets.LW_ACCESS_TOKEN }} -n ${{ secrets.LW_ACCOUNT_NAME }}
