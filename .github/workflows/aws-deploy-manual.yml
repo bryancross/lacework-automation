@@ -25,9 +25,9 @@ on:
       LW_API_SECRET:
         description: 'Your Lacework API Secret'
         default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-       required: true
+        required: true
       LW_ACCOUNT:
-        description 'Your Lacework Account'
+        description: 'Your Lacework Account'
         default: 'XXXXXXXXXX'
         required: true
                
