@@ -18,18 +18,18 @@ on:
         description: 'Your AWS Secret'
         default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         required: true
-#     LW_API_KEY_ID:
-#        description: 'Your Lacework API KeyId'
-#        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-#        required: true
-#      LW_API_SECRET:
-#        description: 'Your Lacework API Secret'
-#        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-#       required: true
-#     LW_ACCOUNT:
-#        description 'Your Lacework Account'
-#        default: 'XXXXXXXXXX'
-#        required: true
+      LW_API_KEY_ID:
+        description: 'Your Lacework API KeyId'
+        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        required: true
+      LW_API_SECRET:
+        description: 'Your Lacework API Secret'
+        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+       required: true
+      LW_ACCOUNT:
+        description 'Your Lacework Account'
+        default: 'XXXXXXXXXX'
+        required: true
                
       
 
