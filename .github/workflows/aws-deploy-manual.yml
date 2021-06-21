@@ -64,8 +64,8 @@ jobs:
           aws-region: ${{ github.event.inputs.AWS_REGION }}
 
       - name: Do the THING
-        env:
-          LW_API_KEY: ${{ github.event.inputs.LW_API_KEY }}
+        with:
+          LW_API_KEY: ${{ github.event.inputs.LW_API_KEY_ID }}
           LW_API_SECRET: ${{ github.event.inputs.LW_API_SECRET }}
           LW_ACCOUNT: ${{ github.event.inputs.LW_ACCOUNT }}
         run: | 
