@@ -39,24 +39,9 @@ jobs:
     name: Build and Scan
     runs-on: ubuntu-latest
     steps:
-      - name: Login to DockerHub Registry
-        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-      
-      - name: Get the version
-        id: vars
-        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
-      
-      - name: Build the tagged Docker image
-        run: docker build . --file Dockerfile --tag pjlamb12/angular-cli:${{steps.vars.outputs.tag}}
-      
-      - name: Push the tagged Docker image
-        run: docker push pjlamb12/angular-cli:${{steps.vars.outputs.tag}}
-      
       - name: Build the latest Docker image
-        run: docker build . --file Dockerfile --tag pjlamb12/angular-cli:latest
+        run: docker build . -t bryancross:test-image
       
-      - name: Push the latest Docker image
-        run: docker push pjlamb12/angular-cli:latest
   
       - name: Download lw-scanner
         run: |
@@ -65,4 +50,4 @@ jobs:
           sudo chmod +x lw-scanner
 
       - name: Scan image
-        run: ./lw-scanner evaluate $REPO/$IMAGE $GITHUB_SHA -v=false | jq -e '.fixable_vulnerabilities == 0, .critical_vulnerabilities == 0, .high_vulnerabilities ==0'
+        run: ./lw-scanner evaluate bryancross test-image -v=false
