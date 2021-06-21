@@ -104,9 +104,9 @@ jobs:
 
       - name: Do the THING
         env:
-          LW_API_KEY: ${{ steps.maks-up.outputs.lw_key_id }}
-          LW_API_SECRET: ${{ steps.maks-up.outputs.lw_secret }}
-          LW_ACCOUNT: ${{ steps.maks-up.outputs.lw_account }}
+          LW_API_KEY: ${{ steps.mask-up.outputs.lw_key_id }}
+          LW_API_SECRET: ${{ steps.mask-up.outputs.lw_secret }}
+          LW_ACCOUNT: ${{ steps.mask-up.outputs.lw_account }}
           AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
           AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
           AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
