@@ -55,7 +55,7 @@ jobs:
           MAN_AWS_SECRET_ACCESS_KEY_SECRET=${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
           MAN_LW_API_KEY_ID_SECRET=${{ github.event.inputs.MAN_LW_API_KEY_ID }}
           MAN_LW_API_SECRET_SECRET=${{ github.event.inputs.MAN_LW_API_SECRET }}
-          MAN_LW_ACCOUNT_SECRET=${{ github.event.inputs.MAN_LW_ACCOUNT }}
+          MAN_LW_ACCOUNT_SECRET=$(jq -r '.inputs.MAN_LW_ACCOUNT' $GITHUB_EVENT_PATH)
           
           
           echo ::add-mask::$MAN_AWS_REGION_SECRET
