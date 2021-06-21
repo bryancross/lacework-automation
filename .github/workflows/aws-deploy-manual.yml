@@ -73,12 +73,12 @@ jobs:
           aws-secret-access-key: ${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ github.event.inputs.MAN_AWS_REGION }}
 
-      - name: Do the THING
-        env:
-          LW_API_KEY: ${{ github.event.inputs.MAN_LW_API_KEY_ID }}
-          LW_API_SECRET: ${{ github.event.inputs.MAN_LW_API_SECRET }}
-          LW_ACCOUNT: ${{ github.event.inputs.MAN_LW_ACCOUNT }}
-        run: | 
-          terraform init
-          terraform apply --auto-approve
+#      - name: Do the THING
+#        env:
+#          LW_API_KEY: ${{ github.event.inputs.MAN_LW_API_KEY_ID }}
+#          LW_API_SECRET: ${{ github.event.inputs.MAN_LW_API_SECRET }}
+#          LW_ACCOUNT: ${{ github.event.inputs.MAN_LW_ACCOUNT }}
+#        run: | 
+#          terraform init
+#          terraform apply --auto-approve
           
