@@ -42,7 +42,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Mask up
+      - run: |
+          echo ::add-mask::$MAN_AWS_REGION
+          echo ::add-mask::$MAN_AWS_ACCESS_KEY_ID
+          echo ::add-mask::$MAN_AWS_SECRET_ACCESS_KEY
+          echo ::add-mask::$MAN_LW_API_KEY_ID
+          echo ::add-mask::$MAN_LW_API_SECRET
+          echo ::add-mask::$MAN_LW_ACCOUNT
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
