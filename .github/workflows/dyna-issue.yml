@@ -1,0 +1,37 @@
+name: Dyna-Issue
+# TODO: Create clever naming convention for tfstate file
+# Controls when the action will run. 
+on:
+  issues: 
+    types: [labeled]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"a
+  InformMatt:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Close the loop
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Matt has been texted :sparkles:
+            > ${{ github.event.issue.body }}
+
+      - name: 'Sending SMS Notification'
+        uses: twilio-labs/actions-sms@v1
+        with:
+          fromPhoneNumber: '+19014575769'
+          # toPhoneNumber: ${{ secrets.MATTS_NUMBER }}
+          toPhoneNumber: '+15126887422'
+          message: ${{ github.event.issue.body }}
+        env:
+         TWILIO_ACCOUNT_SID: "AC702aa3782a462bf7ac7e34b5e78e1126"
+         TWILIO_API_KEY: "b788d9e0e263883dad7a48df501ab7a9"
+         TWILIO_API_SECRET: "qPjPvemFMkU0XxLOq12aVs9r4NLy6o4w"
+         #TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+         #TWILIO_API_KEY: ${{ secrets.TWILIO_API_KEY }}
+         #WILIO_API_SECRET: ${{ secrets.TWILIO_API_SECRET }}
