@@ -14,7 +14,7 @@ on:
         description: 'Your AWS Access Key'
         default: 'XXXXXXXXXXXXXXXXXXXX'
         required: true
-      AWS_SECRET: 
+      AWS_SECRET_ACCESS_KEY: 
         description: 'Your AWS Secret'
         default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
         required: true
@@ -58,10 +58,9 @@ jobs:
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
-        env:
+        with:
           aws-access-key-id: ${{ github.event.inputs.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ github.event.inputs.AWS_SECRET_ACCESS_KEY }}
-          #aws-region: us-east-1
           aws-region: ${{ github.event.inputs.AWS_REGION }}
 
       - name: Do the THING
