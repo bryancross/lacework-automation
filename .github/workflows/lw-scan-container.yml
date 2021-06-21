@@ -32,8 +32,8 @@ jobs:
 
       - name: Scan image
         env: 
-          LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
-          LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
+          LW_ACCOUNT_NAME: lwintbryancross
+          LW_ACCESS_TOKEN: _67d888a3d3482667c13e49f57c6b6aa4
         run: | 
           ./lw-scanner config view
           ./lw-scanner evaluate bryancross test-image 
