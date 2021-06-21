@@ -5,31 +5,7 @@ on:
   repository_dispatch:
     types: [create]
   workflow_dispatch:
-    inputs:
-      AWS_REGION:
-        description: 'AWS Region to deploy in'
-        default: 'us-east-1'
-        required: true
-      AWS_ACCESS_KEY_ID: 
-        description: 'Your AWS Access Key'
-        default: 'XXXXXXXXXXXXXXXXXXXX'
-        required: true
-      AWS_SECRET: 
-        description: 'Your AWS Secret'
-        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-        required: true
-      LW_API_KEY_ID:
-        description: 'Your Lacework API KeyId'
-        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-        required: true
-      LW_API_SECRET:
-        description: 'Your Lacework API Secret'
-        default: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-        required: true
-      LW_ACCOUNT:
-        description 'Your Lacework Account'
-        default: 'XXXXXXXXXX'
-        required: true
+  
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
