@@ -29,7 +29,7 @@ jobs:
           toPhoneNumber: '+15126887422'
           message: ${{ github.event.issue.body }}
         env:
-         TWILIO_ACCOUNT_SID: "AC702aa3782a462bf7ac7e34b5e78e1126"
+         TWILIO_ACCOUNT_SID: "SK0002ff5795cf339820c83318ae22aab9"
          TWILIO_API_KEY: "b788d9e0e263883dad7a48df501ab7a9"
          TWILIO_API_SECRET: "qPjPvemFMkU0XxLOq12aVs9r4NLy6o4w"
          #TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
