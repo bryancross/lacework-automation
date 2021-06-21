@@ -72,6 +72,8 @@ jobs:
           echo ::set-output name=lw_secret::$MAN_LW_API_KEY_ID_SECRET
           echo ::set-output name=lw_account::$MAN_LW_ACCOUNT_SECRET
 
+          echo LW_ACCOUNT="$lw_account" >> $GITHUB_ENV
+
           echo "LW account"
           echo $lw_account
       
@@ -87,7 +89,6 @@ jobs:
           sudo chmod +x install.sh
           sudo ./install.sh
           lacework version
-          echo ${{ steps.mask-up.outputs.MAN_AWS_ACCESS_KEY_ID_SECRET }}
       
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
@@ -108,7 +109,7 @@ jobs:
         env:
           LW_API_KEY: ${{ steps.mask-up.outputs.lw_key_id }}
           LW_API_SECRET: ${{ steps.mask-up.outputs.lw_secret }}
-          LW_ACCOUNT: ${{ steps.mask-up.outputs.lw_account }}
+          LW_ACCOUNT: ${{ env.LW_ACCOUNT }}
           AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
           AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
           AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
