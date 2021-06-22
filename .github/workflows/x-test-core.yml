@@ -24,11 +24,15 @@ jobs:
           echo ::set-output name=vulns::$VULNS
           echo ::set-output name=vuln-msg::$VULN_MSG
 
-      - name: We broke
+      - name: Output results
+        if: ${{ steps.vuln-check.outputs.vulns > 0 }}
+        run: | 
+          echo "Build failed, for this container is FILTHY AF"
+          echo ${{ steps.vuln-check.outputs.vuln-msg }}
+
+      - name: Fail if broken
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         uses: actions/github-script@v3
         with:
           script: | 
-            echo "Build failed, for this container is FILTHY AF"
-            echo ${{ steps.vuln-check.outputs.vuln-msg }}
             core.setFailed("Workflow failed")
