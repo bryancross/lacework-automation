@@ -34,6 +34,9 @@ jobs:
         id: vuln-check
         run: | 
           export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
+          echo VULNS
+          echo $VULNS
+          echo DONE
           echo ::set-output name=vulns::$VULNS
 
       - name: We broke
@@ -41,4 +44,5 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: | 
-            core.setFailed('Holy shit! This container if FILTHY AF!!!')          
+            cat $(find . -type f -name 'evaluation*')
+            core.setFailed('Holy shit! This container if FILTHY AF!!!')       
