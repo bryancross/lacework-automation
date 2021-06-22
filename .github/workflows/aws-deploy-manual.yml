@@ -10,26 +10,26 @@ on:
         description: 'AWS Region to deploy in'
         default: 'us-east-1'
         required: true
-      MAN_AWS_ACCESS_KEY_ID: 
-        description: 'Your AWS Access Key'
-        default: 'AKIA3FJB3GXTVNUVIY4H'
-        required: true
-      MAN_AWS_SECRET_ACCESS_KEY: 
-        description: 'Your AWS Secret'
-        default: 'lIzp/7DwtG/mKzD6yI8WZ1/xangwnif2UWRHGG0A'
-        required: true
-      MAN_LW_API_KEY_ID:
-        description: 'Your Lacework API KeyId'
-        default: 'LWINTBRY_7CCC3D8447865E16C4086CC3C240B9F5121F3A362093AFF'
-        required: true
-      MAN_LW_API_SECRET:
-        description: 'Your Lacework API Secret'
-        default: '_67d888a3d3482667c13e49f57c6b6aa4'
-        required: true
-      MAN_LW_ACCOUNT:
-        description: 'Your Lacework Account'
-        default: 'lwintbryancross'
-        required: true
+#      MAN_AWS_ACCESS_KEY_ID: 
+#        description: 'Your AWS Access Key'
+#        default: 'AKIA3FJB3GXTVNUVIY4H'
+#        required: true
+#      MAN_AWS_SECRET_ACCESS_KEY: 
+#        description: 'Your AWS Secret'
+#        default: 'lIzp/7DwtG/mKzD6yI8WZ1/xangwnif2UWRHGG0A'
+#        required: true
+#      MAN_LW_API_KEY_ID:
+#        description: 'Your Lacework API KeyId'
+#        default: 'LWINTBRY_7CCC3D8447865E16C4086CC3C240B9F5121F3A362093AFF'
+#        required: true
+#      MAN_LW_API_SECRET:
+#        description: 'Your Lacework API Secret'
+#        default: '_67d888a3d3482667c13e49f57c6b6aa4'
+#        required: true
+#      MAN_LW_ACCOUNT:
+#        description: 'Your Lacework Account'
+##        default: 'lwintbryancross'
+#        required: true
                
       
 
