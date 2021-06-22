@@ -2,9 +2,8 @@ name: Dyna-Issue
 # TODO: Create clever naming convention for tfstate file
 # Controls when the action will run. 
 on:
-  pull_request:
-#  issues: 
-#    types: [labeled]
+  issues: 
+    types: [labeled]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,14 +21,7 @@ jobs:
             Matt has been texted :sparkles:
             > ${{ github.event.issue.body }}
 
-      - name: 'Sending SMS Notification'
-        uses: twilio-labs/actions-sms@v1
-        with:
-          fromPhoneNumber: '+19014575769'
-          toPhoneNumber: ${{ secrets.MATTS_NUMBER }}
-          toPhoneNumber: '+15126887422'
-          message: "${{ github.event.issue.body }} \n ${{ github.event.issue.comments_url }}
-        env:
-         TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-         TWILIO_API_KEY: ${{ secrets.TWILIO_API_KEY }}
-         WILIO_API_SECRET: ${{ secrets.TWILIO_API_SECRET }}
+      - name: Build message
+        run: | 
+          echo "${{ github.event.issue.body }} \n ${{ github.event.issue.url }}"
+        
