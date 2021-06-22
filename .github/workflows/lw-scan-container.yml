@@ -12,6 +12,8 @@ on:
 jobs:
   BuildAndScan:
     runs-on: ubuntu-latest
+    env: 
+      VULN-MESSAGE: 'No vulnerabilities found!'
     steps:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -44,6 +46,10 @@ jobs:
           echo ::set-output name=vulns::$VULNS
           echo ::set-output name=vuln-msg::$VULN_MSG
 
+      - name: Create feedback message
+        if: ${{ steps.vuln-check.outputs.vulns > 0 }}
+        run: | 
+          
 
       - name: We broke
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
