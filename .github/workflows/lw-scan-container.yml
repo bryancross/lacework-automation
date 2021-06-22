@@ -6,14 +6,12 @@ on:
     types: [scan]
   workflow_dispatch:
   pull_request:
-    branches: [deploy*]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   BuildAndScan:
     runs-on: ubuntu-latest
-    env: 
-      VULN-MESSAGE: 'No vulnerabilities found!'
     steps:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -34,26 +32,23 @@ jobs:
           printf ".\ntrue\nfalse" | ./lw-scanner config data
           ./lw-scanner evaluate bryancross test-image -t ${{ secrets.LW_ACCESS_TOKEN }} -n ${{ secrets.LW_ACCOUNT_NAME }} 
 
-      - name: Check for vulns
+      - name: Check for vulnerabilities
         id: vuln-check
         run: | 
           export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
-          export VULN_MSG=$(jq -f message.jq $(find . -type f -name 'evaluation*'))
-          echo VULNS
-          echo $VULNS
-          echo $VULN_MSG
-          echo DONE
-          echo ::set-output name=vulns::$VULNS
-          echo ::set-output name=vuln-msg::$VULN_MSG
 
-      - name: Create feedback message
+      - name: Output results
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         run: | 
-          
+          echo "Build failed, for this container is FILTHY AF"
+          echo "Details:"
+          #This seems to be the only way to get the JQ output pretty printed
+          jq -f message.jq $(find . -type f -name 'evaluation*') > results.json
+          cat results.json
 
-      - name: We broke
+      - name: Fail if broken
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         uses: actions/github-script@v3
         with:
           script: | 
-            core.setFailed('Holy shit! This container if FILTHY AF!!!')
+            core.setFailed("Critical/High vulnerabilities found!")
