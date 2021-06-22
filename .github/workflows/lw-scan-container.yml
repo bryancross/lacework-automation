@@ -36,6 +36,7 @@ jobs:
         id: vuln-check
         run: | 
           export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
+          echo ::set-output name=vulns::$VULNS
 
       - name: Output results
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
