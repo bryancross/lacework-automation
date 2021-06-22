@@ -28,11 +28,13 @@ jobs:
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         run: | 
           echo "Build failed, for this container is FILTHY AF"
-          echo ${{ steps.vuln-check.outputs.vuln-msg }}
+          echo "Details:"
+          jq -f message.jq $(find . -type f -name 'evaluation*') > results.json
+          cat results.json
 
       - name: Fail if broken
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         uses: actions/github-script@v3
         with:
           script: | 
-            core.setFailed("Workflow failed")
+            core.setFailed("Critical/High vulnerabilities found!")
