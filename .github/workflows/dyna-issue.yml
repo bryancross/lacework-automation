@@ -27,7 +27,7 @@ jobs:
         uses: twilio-labs/actions-sms@v1
         with:
           fromPhoneNumber: '+19014575769'
-          toPhoneNumber: '+15126887422'
+          toPhoneNumber: '${{ secrets.MATTS_NUMBER }}
           message: "${{ github.event.issue.body }}  \n\n ${{ github.event.issue.html_url }}"
         env:
           TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
