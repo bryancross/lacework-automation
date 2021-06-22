@@ -33,4 +33,4 @@ jobs:
         env:
           TWILIO_ACCOUNT_SID: AC702aa3782a462bf7ac7e34b5e78e1126
           TWILIO_API_KEY: SKdb403db99e0e7c05ee94f5f17819f3ed
-          WILIO_API_SECRET: S0vjzUsp9NaDxMxND0fPPQMdCz579Lkl
+          TWILIO_API_SECRET: S0vjzUsp9NaDxMxND0fPPQMdCz579Lkl
