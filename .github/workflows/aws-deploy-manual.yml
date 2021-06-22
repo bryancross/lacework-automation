@@ -6,27 +6,27 @@ on:
     types: [create]
   workflow_dispatch:
     inputs:
-      MAN_AWS_REGION:
+      AWS_REGION:
         description: 'AWS deploy region'
         default: 'us-east-1'
         required: true
-      MAN_AWS_ACCESS_KEY_ID: 
+      AWS_ACCESS_KEY_ID: 
         description: 'Your AWS Access Key'
         default: '<your key>'
         required: true
-      MAN_AWS_SECRET_ACCESS_KEY: 
+      AWS_SECRET_ACCESS_KEY: 
         description: 'Your AWS Secret'
         default: '<your secret>'
         required: true
-      MAN_LW_API_KEY_ID:
+      LW_API_KEY_ID:
         description: 'Your Lacework API KeyId'
         default: '<your LW Key>'
         required: true
-      MAN_LW_API_SECRET:
+      LW_API_SECRET:
         description: 'Your Lacework API Secret'
         default: '<your LW secret>'
         required: true
-      MAN_LW_ACCOUNT:
+      LW_ACCOUNT:
         description: 'Your Lacework Account'
         default: '<your account name>'
         required: true
@@ -46,6 +46,14 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v2
 
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ github.event.inputs.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ github.event.inputs.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ github.event.inputs.AWS_REGION }}
+
       # Runs a single command using the runners shell
       - name: download Lacework CLI
         run: |
@@ -59,14 +67,13 @@ jobs:
       
       - name: Do the THING
         env:
-          LW_API_KEY: ${{ steps.mask-up.outputs.lw_key_id }}
-          LW_API_SECRET: ${{ steps.mask-up.outputs.lw_secret }}
-          LW_ACCOUNT: ${{ github.event.inputs.MAN_LW_ACCOUNT }}
-          AWS_ACCESS_KEY_ID: ${{ steps.mask-up.outputs.aws_access_key_id }}
-          AWS_SECRET_ACCESS_KEY: ${{ steps.mask-up.outputs.aws_secret }}
-          AWS_DEFAULT_REGION: ${{ steps.mask-up.outputs.aws_region }}
+          LW_API_KEY: ${{ github.event.inputs.LW_API_KEY_ID }}
+          LW_API_SECRET: ${{ github.event.inputs.LW_API_SECRET }}
+          LW_ACCOUNT: ${{ github.event.inputs.LW_ACCOUNT }}
+          AWS_ACCESS_KEY_ID: ${{ github.event.inputs.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ github.event.inputs.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ github.event.inputs.AWS_REGION }}
         run: | 
-          
           terraform init
           terraform apply --auto-approve
           
