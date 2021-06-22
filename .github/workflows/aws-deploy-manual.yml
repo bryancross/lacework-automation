@@ -46,39 +46,6 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v2
 
-      - name: Mask up
-        id: mask-up
-        run: |
-          
-          MAN_AWS_REGION_SECRET=$(jq -r '.inputs.MAN_AWS_REGION' $GITHUB_EVENT_PATH)
-          MAN_AWS_ACCESS_KEY_ID_SECRET=${{ github.event.inputs.MAN_AWS_ACCESS_KEY_ID }}
-          MAN_AWS_SECRET_ACCESS_KEY_SECRET=${{ github.event.inputs.MAN_AWS_SECRET_ACCESS_KEY }}
-          MAN_LW_API_KEY_ID_SECRET=${{ github.event.inputs.MAN_LW_API_KEY_ID }}
-          MAN_LW_API_SECRET_SECRET=${{ github.event.inputs.MAN_LW_API_SECRET }}
-          MAN_LW_ACCOUNT_SECRET=$(jq -r '.inputs.MAN_LW_ACCOUNT' $GITHUB_EVENT_PATH)
-          
-          
-          echo ::add-mask::$MAN_AWS_REGION_SECRET
-          echo ::add-mask::$MAN_AWS_ACCESS_KEY_ID_SECRET
-          echo ::add-mask::$MAN_AWS_SECRET_ACCESS_KEY_SECRET
-          echo ::add-mask::$MAN_LW_API_KEY_ID_SECRET
-          echo ::add-mask::$MAN_LW_API_SECRET_SECRET
-          echo ::add-mask::$MAN_LW_ACCOUNT_SECRET
-
-          echo ::set-output name=aws_region::$MAN_AWS_REGION_SECRET
-          echo ::set-output name=aws_access_key_id::$MAN_AWS_ACCESS_KEY_ID_SECRET
-          echo ::set-output name=aws_secret::$MAN_AWS_SECRET_ACCESS_KEY_SECRET
-          echo ::set-output name=lw_key_id::$MAN_LW_API_KEY_ID_SECRET
-          echo ::set-output name=lw_secret::$MAN_LW_API_KEY_ID_SECRET
-          echo ::set-output name=lw_account::$MAN_LW_ACCOUNT_SECRET
-
-          echo LW_ACCOUNT="$lw_account" >> $GITHUB_ENV
-
-          echo "LW account"
-          echo $lw_account
-      
-      
-
       # Runs a single command using the runners shell
       - name: download Lacework CLI
         run: |
