@@ -16,19 +16,13 @@ jobs:
         id: vuln-check
         run: | 
           export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
-          export VULN_MSG=$(jq -f message.jq $(find . -type f -name 'evaluation*'))
-          echo VULNS
-          echo $VULNS
-          echo $VULN_MSG
-          echo DONE
-          echo ::set-output name=vulns::$VULNS
-          echo ::set-output name=vuln-msg::$VULN_MSG
 
       - name: Output results
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         run: | 
           echo "Build failed, for this container is FILTHY AF"
           echo "Details:"
+          #This seems to be the only way to get the JQ output pretty printed
           jq -f message.jq $(find . -type f -name 'evaluation*') > results.json
           cat results.json
 
