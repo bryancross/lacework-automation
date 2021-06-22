@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       MAN_AWS_REGION:
-        description: 'AWS Region to deploy in'
+        description: 'AWS deploy region'
         default: 'us-east-1'
         required: true
 #      MAN_AWS_ACCESS_KEY_ID: 
