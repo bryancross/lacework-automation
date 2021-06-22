@@ -1,0 +1,33 @@
+name: Test Core
+# TODO: Leverage Terraform backend maintenance of state file (https://www.terraform.io/docs/language/settings/backends/s3.html)
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test-core:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+
+      - name: Check for vulns
+        id: vuln-check
+        run: | 
+          export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
+          set VULN_MSG=$(jq -f message.jq $(find . -type f -name 'evaluation*'))
+          echo VULNS
+          echo $VULNS
+          echo $VULN_MSG
+          echo DONE
+          echo ::set-output name=vulns::$VULNS
+          echo ::set-output name=vuln-msg::$VULN_MSG
+
+      - name: We broke
+        if: ${{ steps.vuln-check.outputs.vulns > 0 }}
+        uses: actions/github-script@v3
+        with:
+          script: | 
+            const Msg = ${{steps.vuln-check.outputs.vuln-msg }}
+            core.setFailed('Holy shit! This container if FILTHY AF!!! \n'  + Msg )
