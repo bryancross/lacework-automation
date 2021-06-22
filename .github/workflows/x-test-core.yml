@@ -29,5 +29,5 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: | 
-            const Msg = ${{steps.vuln-check.outputs.vuln-msg }}
+            const Msg = ${{steps.vuln-check.outputs.vuln-msg }};
             core.setFailed('Holy shit! This container if FILTHY AF!!! \n'  + Msg )
