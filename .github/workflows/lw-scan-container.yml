@@ -34,14 +34,18 @@ jobs:
         id: vuln-check
         run: | 
           export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
+          export VULN_MSG=$(jq -f message.jq $(find . -type f -name 'evaluation*'))
           echo VULNS
           echo $VULNS
+          echo $VULN_MSG
           echo DONE
           echo ::set-output name=vulns::$VULNS
+          echo ::set-output name=vuln-msg::$VULN_MSG
+
 
       - name: We broke
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         uses: actions/github-script@v3
         with:
           script: | 
-            core.setFailed('Holy shit! This container if FILTHY AF!!!')       
+            core.setFailed('Holy shit! This container if FILTHY AF!!!\n ${{ steps.vuln-check.outputs.vuln-msg }} ')

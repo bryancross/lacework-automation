@@ -1,0 +1,1 @@
+.image.image_layers[].packages[].vulnerabilities[] | select (.severity=="High") | {"name":.name,"severity":.severity,"description":.description,"fix_version":.fix_version}
