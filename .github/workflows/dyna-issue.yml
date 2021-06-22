@@ -28,7 +28,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            I see you've applied the _${{ github.event.label.name }} label.  Great job! 
+            I see you've applied the **_${{ github.event.label.name }}_** label.  Great job! 
 
       - name: 'Sending SMS Notification'
         if: ${{ github.event.label.name == 'Text This to Matt C' }}
