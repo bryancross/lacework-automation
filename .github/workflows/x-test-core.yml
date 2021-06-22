@@ -29,4 +29,5 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: | 
-            core.setFailed("Holy shit! This container if FILTHY AF!!! \n  ${{steps.vuln-check-outputs.vuln-msg}} ")
+            echo "Build failed, for this container is FILTHY AF"
+            core.setFailed("Holy shit! This container if FILTHY AF!!! \n  ${{ steps.vuln-check.outputs.vuln-msg }} ")
