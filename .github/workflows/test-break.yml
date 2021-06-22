@@ -11,16 +11,12 @@ jobs:
   Break:
     runs-on: ubuntu-latest
     steps:
-
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 
         uses: actions/checkout@v2
-
       - name: Check for vulns
         id: vuln-check
         run: | 
-        echo ::set-output name=vulns::$VULNS
-        echo foo
+          echo ::set-output name=vulns::$VULNS
 
       -name: We broke
        if: ${( steps.vuln-check.outputs.vulns > 0)}
