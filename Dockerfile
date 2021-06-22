@@ -1,13 +1,7 @@
-FROM ubuntu:20.04
-ENV LC_CTYPE C.UTF-8
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -yq gcc make wget curl git gdb clang llvm \
-	python3 python3-pip bsdmainutils
-# go into lower user
-RUN useradd -ms /bin/bash user
-RUN cd /root/ && wget \ 
-	https://github.com/vim/vim/archive/refs/tags/v8.1.1364.tar.gz \
-	&& tar xvzf v8.1.1364.tar.gz
-RUN cd /root/vim-8.1.1364/ && make && make install
-USER user
-WORKDIR /home/user
+ # syntax=docker/dockerfile:1
+ FROM node:12-alpine
+ RUN apk add --no-cache python g++ make
+ WORKDIR /app
+ COPY . .
+ RUN yarn install --production
+ CMD ["node", "src/index.js"]
