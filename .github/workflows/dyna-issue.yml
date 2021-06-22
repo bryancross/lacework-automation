@@ -26,7 +26,7 @@ jobs:
         with:
           fromPhoneNumber: '+19014575769'
           toPhoneNumber: '+15126887422'
-          message: "${{ github.event.issue.body }}  \n ${{ github.event.issue.html_url }}"
+          message: "${{ github.event.issue.body }}  \n\n ${{ github.event.issue.html_url }}"
         env:
           TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
           TWILIO_API_KEY: ${{ secrets.TWILIO_API_KEY }}
