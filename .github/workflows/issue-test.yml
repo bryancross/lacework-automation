@@ -1,4 +1,4 @@
-name: Dyna-Issue
+name: Test message
 # TODO: Create clever naming convention for tfstate file
 # Controls when the action will run. 
 on:
