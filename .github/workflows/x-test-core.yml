@@ -16,7 +16,7 @@ jobs:
         id: vuln-check
         run: | 
           export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
-          set VULN_MSG=$(jq -f message.jq $(find . -type f -name 'evaluation*'))
+          export VULN_MSG=$(jq -f message.jq $(find . -type f -name 'evaluation*'))
           echo VULNS
           echo $VULNS
           echo $VULN_MSG
