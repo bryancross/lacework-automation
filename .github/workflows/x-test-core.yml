@@ -30,4 +30,4 @@ jobs:
         with:
           script: | 
             echo "Build failed, for this container is FILTHY AF"
-            core.setFailed("Holy shit! This container if FILTHY AF!!! \n  ${{ steps.vuln-check.outputs.vuln-msg }} ")
+            core.setFailed("Holy shit! This container if FILTHY AF!!! \n " + ${{ steps.vuln-check.outputs.vuln-msg }} )
