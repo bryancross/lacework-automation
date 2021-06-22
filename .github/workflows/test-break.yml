@@ -19,7 +19,6 @@ jobs:
       - name: Check for vulns
         id: vuln-check
         run: | 
-        export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
         echo ::set-output name=vulns::$VULNS
         
 
