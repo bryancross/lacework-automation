@@ -22,6 +22,14 @@ jobs:
             Matt has been texted :sparkles:
             > ${{ github.event.issue.body }}
 
+      - name: Respond to the issue
+        if: ${{ github.event.label.name != 'Text This to Matt C' }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            I see you've applied the _${{ github.event.label.name }} label.  Great job! 
+
       - name: 'Sending SMS Notification'
         if: ${{ github.event.label.name == 'Text This to Matt C' }}
         uses: twilio-labs/actions-sms@v1
