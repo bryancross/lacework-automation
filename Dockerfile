@@ -1,6 +1,7 @@
-# positively filthy image with 100s of CVEs
-FROM node:14
-WORKDIR /usr/src/app
-# The filth
-COPY package*.json ./
-RUN npm install
+ # syntax=docker/dockerfile:1
+ FROM node:12-alpine
+ RUN apk add --no-cache python g++ make
+ WORKDIR /app
+ COPY . .
+ RUN yarn install --production
+ CMD ["node", "src/index.js"]
