@@ -20,7 +20,7 @@ jobs:
         id: vuln-check
         run: | 
         echo ::set-output name=vulns::$VULNS
-        
+        echo foo
 
       -name: We broke
        if: ${( steps.vuln-check.outputs.vulns > 0)}
