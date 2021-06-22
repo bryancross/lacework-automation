@@ -16,10 +16,11 @@ jobs:
       - name: Check for vulns
         id: vuln-check
         run: | 
+          export VULNS=$(jq .high_vulnerabilities $(find . -type f -name 'evaluation*'))
           echo ::set-output name=vulns::$VULNS
 
       - name: We broke
-        if: ${{ steps.vuln-check.outputs.vulns > 0}}
+        if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         uses: actions/github-script@v3
         with:
           script: | 
