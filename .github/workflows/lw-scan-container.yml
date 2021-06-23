@@ -44,10 +44,9 @@ jobs:
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
         run: | 
           echo "Build failed, for this container is FILTHY AF"
-          echo "Details:"
+          echo "Details: " $VULNS " critical/high vulnerabilities detected."
           #This seems to be the only way to get the JQ output pretty printed
-          jq -f message.jq $(find . -type f -name 'evaluation*') > results.json
-          cat results.json
+          jq -f message.jq $(find . -type f -name 'evaluation*') 
 
       - name: Fail if broken
         if: ${{ steps.vuln-check.outputs.vulns > 0 }}
