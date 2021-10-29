@@ -1,10 +1,10 @@
 # lacework-automation
 
-# Authentication/Credentials
+### Authentication/Credentials
 
 You'll need to configure a [Lacework Inline Scanner instance](https://support.lacework.com/hc/en-us/articles/1500001777821-Integrate-Inline-Scanner#create-an-inline-scanner-integration-in-lacework) and download or store a [Scanner Access Token](https://support.lacework.com/hc/en-us/articles/1500001777821-Integrate-Inline-Scanner#obtain-the-inline-scanner-and-authorization-token).  Use these to populate the following secrets:   
 
-and set the following secrets for these workflows:
+Set the following secrets for these workflows:
 
 | Secret | Description | 
 |---|---|
