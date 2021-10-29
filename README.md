@@ -1,5 +1,16 @@
 # lacework-automation
 
+# Authentication/Credentials
+
+You'll need to configure a [Lacework Inline Scanner instance](https://support.lacework.com/hc/en-us/articles/1500001777821-Integrate-Inline-Scanner#create-an-inline-scanner-integration-in-lacework) and download or store a [Scanner Access Token](https://support.lacework.com/hc/en-us/articles/1500001777821-Integrate-Inline-Scanner#obtain-the-inline-scanner-and-authorization-token).  Use these to populate the following secrets:   
+
+and set the following secrets for these workflows:
+
+| Secret | Description | 
+|---|---|
+| LW_ACCOUNT_NAME | Your lacework account name.  Omit `lacework.net` | 
+| LW_ACCESS_TOKEN | Your scanner access token.  |
+
 ## Example workflows for automating Lacework integration and scanning
 
 ### [aws-deploy-manual.yml](https://github.com/BidnessForB/lw-auto/blob/main/.github/workflows/aws-deploy-manual.yml)
