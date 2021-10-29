@@ -11,6 +11,8 @@ Set the following secrets for these workflows:
 | LW_ACCOUNT_NAME | Your lacework account name.  Omit `lacework.net` | 
 | LW_ACCESS_TOKEN | Your scanner access token.  |
 
+NOTE: These secrets are not set for this repo, so you'll have to add them to yours.  
+
 ## Example workflows for automating Lacework integration and scanning
 
 ### [aws-deploy-manual.yml](https://github.com/BidnessForB/lw-auto/blob/main/.github/workflows/aws-deploy-manual.yml)
